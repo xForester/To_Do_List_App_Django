@@ -1,6 +1,21 @@
+
+{% if request.user.is_authenticated %}
+<p>{{request.user}}</p>
+<a href="{% url 'logout' %}">Logout</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+<hr>
 <h1>My To Do list</h1>
-<h3>Skonczony film 54 min</h3>
+
 <a href="{% url 'task-create' %}">Add Task</a>
+
+<form method="GET"> 
+    <input type='text' name='search-area', value="{{search_input}}">
+    <input type='submit' value='Search'>
+</form>
+
 <table> 
     <tr>
         <th>Item</th>
